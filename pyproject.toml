@@ -1,0 +1,19 @@
+[project]
+name = "vgl-cold-replay"
+version = "1.0.0"
+description = "Fully-Python cold-replay kit for the SZL Holdings x Vidal-Gadea Lab protocol: reproduce the sprint evidence from public artifacts alone, anonymously."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "SZL Holdings", email = "stephen@szlholdings.com" }]
+dependencies = []  # stdlib only, deliberately
+
+[project.scripts]
+vgl-cold-replay = "vgl_cold_replay.replay:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["vgl_cold_replay"]
