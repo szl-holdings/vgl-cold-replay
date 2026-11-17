@@ -32,8 +32,7 @@
    "search_performed": "SHA-256 and SHA3-256 over sorted/unsorted keys x ensure_ascii true/false x compact/default separators x indent-2, each with receipt_sha256 dropped and present, plus raw file bytes - 20+ recipe variants, no match",
    "diagnosis": "the receipt body does not declare its canonicalization profile or hash algorithm, so the embedded digest cannot be recomputed from the published file alone - precisely the drift szl-evidence-core was extracted to fix",
    "locations_searched": "published files at frontier-54-runs/lean/ on main; recipe variants enumerated; szl-nemo receipt.py chain recipe checked as reference",
-   "not_a_claim": "does NOT contradict the lake-build receipt content (9,242 jobs, zero errors, Mathlib v4.35.0); it says that receipt generation's digest field is not independently checkable. Future receipts should carry algorithm-declared digests (szl-evidence-core envelope).",
-   "superseded": "see receipts/sprint-20261117-digest-finding-supersession.json in this repo and on wink-observatory-data commit be4d2485: the digests DO reproduce (recipe search omitted sorted+default separators); residual correct finding is the undeclared recipe"
+   "not_a_claim": "does NOT contradict the lake-build receipt content (9,242 jobs, zero errors, Mathlib v4.35.0); it says that receipt generation's digest field is not independently checkable. Future receipts should carry algorithm-declared digests (szl-evidence-core envelope)."
   }
  },
  "protocol_gap_status": {
