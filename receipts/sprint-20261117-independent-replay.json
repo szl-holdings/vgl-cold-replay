@@ -1,0 +1,95 @@
+{
+ "kind": "szl.sprint-independent-replay/v1",
+ "date": "2026-11-17",
+ "what": "Compressed evidence sprint executed 17 Nov against PUBLIC artifacts only (anonymous fetches, no member access), per owner directive to execute the 10-day plan now.",
+ "checks": {
+  "evidence_primitives": {
+   "source": "szl-holdings/szl-evidence-core @ main via codeload tarball, run from source tree, stdlib only",
+   "selftest": "122/122 checks PASS (exit 0)",
+   "lambda_vectors": "60/60 value/verdict/code PASS; vectors file canonical sha256 61bfb0410b9f0eaab0eb9f22f29cb7cb13cfde8c083fe308d895565d6ba9ebd4"
+  },
+  "battery_v2_1_determinism": {
+   "artifacts": "frontier-54-runs collaboration/vgl-criteria-v2/salad-v5-heldout-v2-20261117T031434.json vs ...T073800.json (anonymous fetch)",
+   "result": "IDENTICAL on every measured value; receipts differ only in started_utc, completed_utc, wall_seconds (861.3 vs 459.9), energy_j (144680892 vs 100007921) - run metadata, not measurements",
+   "criteria": "c2 contamination PASS (0/40, 95% UB 7.2%); c3 refusal-preservation FAIL (|0.75-0.10|>0.15 - trippable, tripped); c4 accuracy-preservation FAIL (base 0.95 vs adapter 0.25 - VOID-capable, tripped); c5 invented-ID PASS (0.133 vs tau 0.20, trippable at 3/15)",
+   "broken_control": "failed 0 rules vs pre-declared must-fail -> battery_admissible=false AS CODED, reported as coded, not overridden"
+  },
+  "fixture_package_cold_verification": {
+   "claim": "B1-style cold reproduction of the A1 fixture package from public artifacts alone",
+   "manifest": "frontier-54-runs collaboration/fixture-package-hashes.json (31 files, per-file SHA-256)",
+   "fetched_from": "szl-holdings/szl-forge @ tag protocol-prep-2026-11-12 via raw.githubusercontent.com, anonymous",
+   "result": "31/31 byte-exact SHA-256 match, 0 mismatch, 0 missing",
+   "significance": "the fixture perimeter needed for protocol B2/B2.2 is verifiable by an outsider with no member access"
+  },
+  "lean_receipt_digest_finding": {
+   "verdict": "NOT_REPRODUCED (negative finding reported with its own search per protocol v1.1 clause 10.4)",
+   "artifacts": [
+    "frontier-54-runs lean/f23-deny-by-default-proven.json",
+    "lean/f24-f25-covenant-proven.json",
+    "lean/lake-build-complete.json"
+   ],
+   "target_field": "receipt_sha256",
+   "search_performed": "SHA-256 and SHA3-256 over sorted/unsorted keys x ensure_ascii true/false x compact/default separators x indent-2, each with receipt_sha256 dropped and present, plus raw file bytes - 20+ recipe variants, no match",
+   "diagnosis": "the receipt body does not declare its canonicalization profile or hash algorithm, so the embedded digest cannot be recomputed from the published file alone - precisely the drift szl-evidence-core was extracted to fix",
+   "locations_searched": "published files at frontier-54-runs/lean/ on main; recipe variants enumerated; szl-nemo receipt.py chain recipe checked as reference",
+   "not_a_claim": "does NOT contradict the lake-build receipt content (9,242 jobs, zero errors, Mathlib v4.35.0); it says that receipt generation's digest field is not independently checkable. Future receipts should carry algorithm-declared digests (szl-evidence-core envelope)."
+  }
+ },
+ "protocol_gap_status": {
+  "second_operator_A3": {
+   "status": "OWNER_DECISION",
+   "note": "required before freeze only"
+  },
+  "independent_checker": {
+   "status": "DONE_THIS_PASS",
+   "evidence": "szl-evidence-core selftest/vectors + fixture cold verification; checker shares no gate logic under test"
+  },
+  "cold_reproduction_B1": {
+   "status": "SZL_SIDE_DONE",
+   "note": "exports public (collaboration/vgl-b1-exports, 21 files, anonymous 200); the B1 run itself is the Vidal-Gadea Lab's settled role"
+  },
+  "exports_B2_1": {
+   "status": "DONE",
+   "evidence": "21 files, anonymous HTTP 200"
+  },
+  "negative_controls_power_A9": {
+   "status": "DONE",
+   "evidence": "v2.1 battery run twice, trippable criteria, control coded battery_admissible=false"
+  },
+  "neutral_accuracy_A10": {
+   "status": "DONE",
+   "evidence": "a10-diagnosis receipt + corrected probe base 19/20; answered in 17-Nov email"
+  },
+  "in_distribution_labels_B5": {
+   "status": "DONE",
+   "evidence": "529 shared identities / 687 quarantined; label on the manuscript table face"
+  },
+  "c1_population_freeze_params_proposed": {
+   "eligible_population": "receipts published to the public receipts chain (frontier-54-runs receipts/ and wink-observatory-data receipts/) bearing a stable receipt_id",
+   "identifier_normalization": "exact receipt_id string match, case-sensitive, no fuzzy matching",
+   "observation_window": "30 days from freeze date",
+   "duplicate_rule": "first citation of an identifier counts; subsequent citations ignored",
+   "chance_baseline_C3": "same count against a corpus in which the receipts could not have been cited (date-shifted control), reported alongside the rate",
+   "status": "PROPOSED_FOR_COUNTER"
+  },
+  "fixture_licence_item_9_proposed": {
+   "proposal": "Apache-2.0 for the synthetic fixture package and its harness (matches szl-forge licence and the decoder-constraint method licence recorded in protocol section 8)",
+   "status": "PROPOSED_FOR_COUNTER"
+  },
+  "contribution_table_item_10": {
+   "status": "DRAFT_FINAL_READY",
+   "note": "protocol v1.1 section 13 as confirmed 12 Nov, with 6 Nov and 12 Nov provenance corrections governing"
+  },
+  "freeze_deposit_item_11": {
+   "status": "NOT_REQUESTED",
+   "note": "Andres: 'No freeze, no date, and I am not asking you for one.' Zenodo proposal stands"
+  }
+ },
+ "compute_gated_items": {
+  "three_arm_comparison": {
+   "status": "BLOCKED_SEV1",
+   "note": "baseline vs receipt/doctrine-trained vs Lean/Ouroboros-verifier-conditioned; 3 seeds, frozen held-out fixtures, PASS/FAIL/abstain/timeout/unparseable reported separately with revision/cost/latency/receipts; training on hold while SEV1 clears, 72h cap after; Salad spend owner-gated"
+  },
+  "claim_discipline": "16x figure is a measured 21.9% capture rate vs a stated floor; not training speed or model-quality improvement. Statuses: theorem/proved, conjecture, measured, experimental, runtime, production."
+ }
+}

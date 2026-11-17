@@ -1,0 +1,68 @@
+{
+ "kind": "szl.sprint-inventory-freeze/v1",
+ "frozen_at": "2026-11-17T07:58:00Z",
+ "purpose": "Compressed evidence sprint (owner directive 17 Nov: execute the 10-day plan now). Freeze of the exact GitHub/HF inventories and source epoch before the 19th.",
+ "github_org_szlholdings": {
+  "total_repos": 165,
+  "public": 139,
+  "private": 26,
+  "archived": 29,
+  "source": "GitHub app org search, 2 pages x 100, full item metadata captured",
+  "inventory_file": "github-org-szl-holdings.json",
+  "inventory_sha256": "3f9d3b6f0979b9a71875706e3cf447524200ad2a24103cd30edab6dce2b365cb",
+  "published_via_pr": "frontier-54-runs collaboration/sprint-20261117/ (PR pending owner merge; main is protected)"
+ },
+ "huggingface_org_SZLHOLDINGS_public": {
+  "models": 147,
+  "datasets": 92,
+  "spaces": 31,
+  "source": "anonymous HF Hub API list endpoints (public only; member search shows >=47 private models, >=31 private datasets, >=42 private spaces - lower bounds)",
+  "inventory_files": {
+   "hf-models-public.json": "8111d15aa07d28f7cc5cbf9c66e42984dab83db4486769bcc033e51f94d59ac7",
+   "hf-datasets-public.json": "ea39fd494c55a0e7cb8a8c474b9283e63d14cef308ac19df14327389f7e01e49",
+   "hf-spaces-public.json": "e95c4f9c07df7411b10db283e6352ed525e080723416cb03cfde33f4d432f9ae"
+  },
+  "regeneration": "GET https://huggingface.co/api/{models,datasets,spaces}?author=SZLHOLDINGS&limit=1000 (anonymous)"
+ },
+ "control_plane_at_freeze": {
+  "state": "SEV1 per operator report at freeze: killinchu down again (23:09 UTC record), zero healthy cycles, a11oy up with elevated error-budget burn, scheduled-estate-census rerun in progress after failed baseline",
+  "live_manifest_epoch_reported": "4fb01357296437dca1c5217cf2895bd1d99d9b64",
+  "deadman_correction": "deadman record reports the live witness healthy within its configured freshness budget; age alone is not staleness",
+  "training": "ON HOLD per owner while incident clears; 72h training cap applies only after SEV1 clears",
+  "public_record_checks_this_pass": {
+   "witness_series": "wink-observatory-data/witness/records.json = NOT_STARTED, empty by design per protocol v1.1 D2 (first observation at co-signature; no freeze asserted) - VERIFIED anonymous 200",
+   "fleet_snapshot": "wink-observatory-data/fleet/snapshot.json captured 2026-11-17T03:15:00Z, 92 groups / 27 active, honest_note present - VERIFIED anonymous 200"
+  }
+ },
+ "spine_audit": {
+  "method": "anonymous HTTP status on github.com/szl-holdings/<repo>",
+  "repos_checked": 23,
+  "all_200": true,
+  "list": [
+   "lutar-lean",
+   "szl-invariants",
+   "szl-formula-ledger",
+   "a11oy",
+   "platform",
+   "frontier-bench",
+   "szl-evidence-core",
+   "szl-receipt",
+   "szl-ouroboros",
+   "governed-receipt-spec",
+   "szl-ci-witness",
+   "ci-witness-action",
+   "evidence-doctrine",
+   "ouroboros",
+   "lean-rlvr-proving-ground",
+   "szl-frontier",
+   "killinchu",
+   "wink-observatory",
+   "szl-kernels",
+   "szl-lambda-gate",
+   "szl-guardrail-receipt",
+   "szl-evidence-litellm",
+   "szl-openshell-receipts"
+  ]
+ },
+ "honest_note": "GitHub inventory captured with member access (includes the 26 private repos' names/metadata); HF public inventory is anonymous-only. Earlier GitHub 403s were anonymous API rate-limiting, not privacy."
+}

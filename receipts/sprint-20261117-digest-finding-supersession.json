@@ -1,0 +1,17 @@
+{
+ "kind": "szl.sprint-finding-supersession/v1",
+ "date": "2026-11-17",
+ "supersedes": {
+  "receipt": "receipts/sprint-20261117-independent-replay.json (commit 1f1a02eddf3bbc993aa103becdaf974ad7d7f044)",
+  "finding": "lean_receipt_digest_finding.verdict = NOT_REPRODUCED"
+ },
+ "replacement_finding": {
+  "verdict": "REPRODUCED (3/3)",
+  "detail": "All three lean/ receipts' embedded receipt_sha256 recompute exactly as SHA-256 over the receipt object minus the receipt_sha256 field, canonicalized with sort_keys=True and Python default separators (', ', ': '), ensure_ascii=True.",
+  "cause_of_original_error": "the original pass's recipe search omitted the sorted-keys + default-separator combination; a search-space bug in the checker, not a defect in the receipts",
+  "residual_correct_finding": "the digest recipe is UNDECLARED in the receipt bodies, so any verifier must search for it; recommendation stands that future receipts carry algorithm-declared digests (szl-evidence-core envelope)",
+  "verified_by": "vgl-cold-replay independent_digest_check (independent re-implementation, shares no code with estate emitters, clause A6), overall replay PASS exit 0 on 2026-11-17"
+ },
+ "where_the_tool_lives": "github.com/szl-holdings/vgl-cold-replay (fully Python, stdlib only, anonymous)",
+ "note": "Recorded per protocol clause 10.2: supersede by naming what is replaced; the original receipt is not edited."
+}
