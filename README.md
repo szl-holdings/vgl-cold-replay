@@ -17,8 +17,14 @@ python3 -m vgl_cold_replay.replay                    # + public inventory snapsh
 ```
 
 Exit codes follow the estate convention: 0 PASS, 1 REVIEW, 2 BLOCKED, 3 ERROR.
-The replay emits a receipt to `evidence/replay.json` with every check's
-artifacts, fields, and verdict.
+The replay **never overwrites** the committed historical `evidence/replay.json`
+baseline. Each default invocation exclusively creates a fresh
+`evidence/replay-<UTC>-<random>.json` receipt, fsyncs and reads back the exact
+bytes, and prints only the SHA-256 checksum (**not a digital signature**).
+Use `--out NEW_UNWRITTEN_PATH.json` to select an explicit *new* destination:
+an existing file or symlink returns BLOCKED without changing any old bytes.
+Unexpected check exception strings are redacted to fixed exception-type reasons;
+local output paths and credentials are never printed.
 
 ## What it verifies (all against live public artifacts)
 
